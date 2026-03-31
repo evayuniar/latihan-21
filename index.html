@@ -5,24 +5,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>kasir lanjutan (2)</title>
+  <title>Program kasir lanjutan (2)</title>
   
+  <!-- HTML -->
   
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="card">
-  <h2>Kasir Toko versi (2)</h2>
+  <div class="card">
+    <h2>Kasir Toko Versi 2</h2>
+    
+    <input type="number" id="hargainput" placeholder="harga barang">
+    
+    <button onclick="tambah()">Tambah Barang</button>
+    
+    <input type="number" id="nomor" placeholder="nomor barang">
+     <input type="number" id="hargaedit" placeholder="harga barang edit">
+    <button onclick="edit()">edit barang</button>
+    
+  <button onclick="hapus()"> Hapus Barang (terakhir)</button>
+    <button onclick="reset()"> reset keranjang</button>
   
-  <input type= "number" id= "hargainput" placeholder="harga barang">
-  
-  <button onclick="tambah()">tambah Barang</button>
-  <button onclick="hapus()">hapus barang (terakhir)</button>
-  <button onclick="reset()">reset keranjang</button>
-  <div id="hasil"></div>
-</div>
-
-<script src="main.js"></script>
+    <div id="hasil"></div>
+  </div>
+  <script src="main.js"></script>
 </body>
 </html>

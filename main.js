@@ -5,47 +5,68 @@ function rupiah(angka) {
   return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-//fungsi untuk menambah barang ke dalam keranjang
+// fungsi untuk menambah barang ke dalam keranjang
 function tambah() {
   //mengambil data harga dari elemen input dengan id "hargainput"
-  //dan mengubahnya menjadi angka
-  let harga = Number (document.getElementById("hargainput").value)
+  //dan mengubah menjadi angka
+  let harga = Number(document.getElementById("hargainput").value)
   
-  //masukan data barang ke dalam array dataBarang
+  //masukkan data harga ke dalam array databarang
   dataBarang.push(harga)
   
-  //kosongkan input harga setelah ditambahkan
-  document.getElementById("hargainput").value =""
+  document.getElementById("hargainput").value = ""
   
   //tampilkan data harga barang
   tampilkan()
 }
 
 function tampilkan() {
-  let total= 0
-  let output=""
-
-  //loop input harga barang dari array global data barang
-for (let i = 0; i < dataBarang.length; i++) {
-  let harga = dataBarang [i]
-  total += harga
+  let total = 0
+  let output = ""
   
-  output += "Barang ke-" + (i + 1) + ": Rp " + rupiah(harga) + "<br>"
+  //loop input harga barang dari array global data barang
+  for (let i = 0; i < dataBarang.length; i++) {
+    let harga = dataBarang[i]
+    total += harga
+    
+    output += "Barang ke-" + (i + 1) + ": Rp " + rupiah(harga) + "<br>"
   }
   
-  output +="<hr>total: Rp " + rupiah(total)
+  output += "<hr>Total: Rp" + rupiah(total)
   
-  //tampilkan output ke dalam elemen dengan id "hasil"
-  document.getElementById("hasil").innerHTML=output 
+  document.getElementById("hasil").innerHTML = output
 }
-//fungsi untuk menghapus barang terakhir dari keranjang
+// fungsi untuk mengahapus barang terakhir dari keranjang
 function hapus() {
   dataBarang.pop()
   tampilkan()
 }
-  
-//fungsi untuk mereset meranjang
+// fungsi untuk mereset keranjang
 function reset() {
-  dataBarang =[]
+  dataBarang = []
   tampilkan()
+}
+
+// fungsi untuk mengedit harga barang berdasarkan nomor barang
+function edit() {
+  //ubah nomor barang menjadi index array dengan mengurangi 1
+  let index = Number(document.getElementById("nomor").value)-1
+  
+  //ambil harga edit dari input 
+  let harga = Number(document.getElementById("hargaedit").value)
+  
+  // periksa apakah index valid
+  if (index >= 0 && index < dataBarang.length) {
+    //update harga barang di array dataBarang
+    dataBarang[index] = harga
+  } else {
+    // jika nomor baeang tidak valid,tampilkan alert
+    alert("Nomor barang tidak valid")
+  }
+  
+tampilkan()
+
+// kosongkan input nomor dan harga edit setelah di edit
+document.getElementById("nomor").value = ""
+document.getElementById("hargaedit").value =""
 }
